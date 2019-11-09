@@ -15,8 +15,3 @@ function binarySearch(arr, val) {
     }
     return mid === elem ? mid : -1;
 }
-
-
-function binarySearchRecursive(arr, val) {
-
-}
