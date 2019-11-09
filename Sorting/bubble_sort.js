@@ -1,3 +1,8 @@
+/*
+In bubble sort, the large values basically "bubble up"
+to the top. O(n^2)
+*/
+
 function swap(arr, indx1, indx2) {
     var temp = arr[indx1];
     arr[indx1] = arr[indx2];
