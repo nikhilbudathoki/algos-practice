@@ -12,7 +12,6 @@ function swap(arr, indx1, indx2) {
 
 
 function insertionSort(arr) {
-
     for (let i = 1; i < arr.length; i++) {
         var currentVal = arr[i];
 
