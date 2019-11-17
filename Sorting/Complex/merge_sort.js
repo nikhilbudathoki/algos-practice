@@ -31,5 +31,14 @@ mergeSort splits up an array into arrays of length 0 or 1,
 then merges those smaller arrays. It sorts while merging.
 */
 function mergeSort(arr) {
+    // Recursive base case
+    if (arr.length <= 1) return arr;
 
+    let mid = Math.floor(arr.length / 2);
+
+    //Recursive function calls
+    let left = mergeSort(arr.slice(0, mid));
+    let right = mergeSort(arr.slice(mid));
+
+    return merge(left, right);
 }
