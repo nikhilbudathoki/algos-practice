@@ -24,7 +24,21 @@ function pivot(arr, start = 0, end = arr.length - 1) {
 
 /*
 quicksort: 
+			- call pivot on array
+			- call quicksort on left of pivot and right of pivot
+			- terminate recursion on: if left >= right
 */
-function quicksort(arr) {
+function quicksort(arr, left = 0, right = arr.length - 1) {
+	let pivotIndex = pivot(array, left, right);
 
+	//base case
+	if (left >= right) {
+		return;
+	}
+
+	//left
+	quicksort(arr, left, pivotIndex - 1);
+
+	//right
+	quicksort(arr, pivotIndex + 1, right);
 }
