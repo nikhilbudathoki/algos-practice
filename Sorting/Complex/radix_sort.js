@@ -32,3 +32,23 @@ function mostDigits(arr) {
 	});
 	return max;
 }
+
+/*
+radixSort: sorts an array based on number of digits
+*/
+function radixSort(arr) {
+	let maxDigitCount = mostDigits(arr);
+
+	for (let k = 0; k < maxDigitCount; ++k) {
+		// Creating 10 buckets, one for each digit in kth place
+		let digitBuckets = Array.from({ length: 10 }, () => [])
+		//Populating buckets
+		for (let i = 0; i < arr.length; i++) {
+			let digit = getDigit(arr[i], k);
+			digitBuckets[digit].push(arr[i]);
+		}
+		// Recollecting numbers from all buckets
+		arr = [].concat(...digitBuckets);
+	}
+	return arr;
+}
