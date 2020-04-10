@@ -38,4 +38,5 @@ function quicksort(arr, left = 0, right = arr.length - 1) {
 		//right
 		quicksort(arr, pivotIndex + 1, right);
 	}
+	return arr;
 }
