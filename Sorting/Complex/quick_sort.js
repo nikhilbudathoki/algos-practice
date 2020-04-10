@@ -12,7 +12,7 @@ function pivot(arr, start = 0, end = arr.length - 1) {
 	let pivot_value = arr[start];
 	let swap_index = 0;
 
-	for (let i = start + 1; i < arr.length; i++) {
+	for (let i = start + 1; i < end; i++) {
 		if (arr[i] < pivot_value) {
 			++swap_index;
 			swap(arr, i, swap_index)
@@ -31,7 +31,7 @@ quicksort:
 function quicksort(arr, left = 0, right = arr.length - 1) {
 	//base case
 	if (left < right) {
-		let pivotIndex = pivot(array, left, right);
+		let pivotIndex = pivot(arr, left, right);
 		//left
 		quicksort(arr, left, pivotIndex - 1);
 
@@ -40,3 +40,10 @@ function quicksort(arr, left = 0, right = arr.length - 1) {
 	}
 	return arr;
 }
+
+
+let arr1 = [1, 4, 3, 2, 5, 3]
+let sorted = quicksort(arr1);
+console.log(arr1);
+console.log(sorted);
+
