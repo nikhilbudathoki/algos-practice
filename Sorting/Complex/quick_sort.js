@@ -5,10 +5,8 @@ pivot: accepts an array and designates an element as the pivot,
         returns index of pivot
 */
 function pivot(arr, start = 0, end = arr.length - 1) {
-	function swap(arr, i, j) {
-		let temp = arr[i];
-		arr[i] = arr[j];
-		arr[j] = temp;
+	const swap = (arr, i, j) => {
+		[arr[i], arr[j]] = [arr[j], arr[i]];
 	}
 
 	let pivot_value = arr[start];
@@ -20,6 +18,13 @@ function pivot(arr, start = 0, end = arr.length - 1) {
 			swap(arr, i, swap_index)
 		}
 	};
-
+	swap(arr, start, swap_index);
 	return swap_index;
+}
+
+/*
+quicksort: 
+*/
+function quicksort(arr) {
+
 }
