@@ -23,9 +23,16 @@ class Student {
                 this.scores.push(score);
                 return this.scores;
         }
+        /* Class methods: methods that are pertinent
+           to whole classes not just instances */
+        static enrollStudents(...students) {
+                return "Enrolling Students!"
+        }
+
 }
 
 let ballonDor = new Student("Luka", "Modric", "2019");
 
 console.log(ballonDor.markLate());
+console.log(Student.enrollStudents());
 
