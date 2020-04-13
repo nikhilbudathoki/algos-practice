@@ -39,4 +39,35 @@ class SinglyLinkedList {
                 ++this.length;
                 return this;
         }
+
+        pop() {
+                if (!this.head) {
+                        return undefined;
+                }
+                let newTail = this.head;
+                let curTail = newTail.next;
+                while (curTail.next) {
+                        newTail = curTail;
+                        curTail = curTail.next;
+                        console.log("=>", newTail.val, curTail.val);
+                }
+                this.tail = newTail;
+                this.tail.next = null;
+                --this.length;
+                if (this.length === 0) {
+                        this.head = null;
+                        this.head = null;
+                }
+                return curTail;
+        }
 }
+
+let sample = new SinglyLinkedList();
+sample.push("HI");
+sample.push("Jude");
+sample.push("Don't")
+sample.push("make");
+sample.push("it");
+sample.push("bad");
+let answer = sample.pop();
+console.log("===", answer.val);
