@@ -125,6 +125,19 @@ class SinglyLinkedList {
                 curNode.val = val;
                 return true;
         }
+
+        insert(index, val) {
+                if (index < 0 || index > this.length) return false;
+                if (index === length) return !!this.push(val); // !! is "Not Not" which simply is a way to cast as boolean
+                if (index === 0) return !!this.unshift(val);
+                var newNode = new Node(val);
+                var prevNode = this.get(index - 1);
+                var curNode = prevNode.next;
+                prevNode.next = newNode;
+                newNode.next = curNode;
+                ++this.length;
+                return true;
+        }
 }
 
 let sample = new SinglyLinkedList();
