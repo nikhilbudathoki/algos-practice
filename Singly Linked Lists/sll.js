@@ -106,6 +106,25 @@ class SinglyLinkedList {
 
                 return curNode;
         }
+
+        set(index, val) {
+                // if (index < 0 || index >= this.length) {
+                //         return undefined;
+                // }
+
+                // let curNode = this.head;
+                // let counter = 0;
+                // while (counter < index) {
+                //         curNode = curNode.next;
+                //         ++counter;
+                // }
+                // curNode.val = val;
+                // return this;
+                var curNode = this.get(index);
+                if (!curNode) return false;
+                curNode.val = val;
+                return true;
+        }
 }
 
 let sample = new SinglyLinkedList();
