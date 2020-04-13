@@ -40,6 +40,7 @@ class SinglyLinkedList {
                 return this;
         }
 
+        // Remove tail from list
         pop() {
                 if (!this.head) {
                         return undefined;
@@ -54,11 +55,25 @@ class SinglyLinkedList {
                 this.tail = newTail;
                 this.tail.next = null;
                 --this.length;
+                // Case if there was only one element in list
                 if (this.length === 0) {
                         this.head = null;
                         this.head = null;
                 }
                 return curTail;
+        }
+
+        // Remove head from list
+        shift() {
+                if (length === 0) return undefined;
+                let curHead = this.head;
+                this.head = this.head.next;
+                --this.length;
+                if (this.length === 0) {
+                        this.tail = null;
+                        this.head = null;
+                }
+                return curHead;
         }
 }
 
