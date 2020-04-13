@@ -12,4 +12,9 @@ O(n) worst case in an array since you'd
 have to re-index the array
 */
 
-class 
+class Node {
+        constructor(val) {
+                this.val = val;
+                this.next = null;
+        }
+}
