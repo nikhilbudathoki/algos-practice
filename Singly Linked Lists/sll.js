@@ -130,6 +130,7 @@ class SinglyLinkedList {
                 if (index < 0 || index > this.length) return false;
                 if (index === length) return !!this.push(val); // !! is "Not Not" which simply is a way to cast as boolean
                 if (index === 0) return !!this.unshift(val);
+
                 var newNode = new Node(val);
                 var prevNode = this.get(index - 1);
                 var curNode = prevNode.next;
@@ -137,6 +138,19 @@ class SinglyLinkedList {
                 newNode.next = curNode;
                 ++this.length;
                 return true;
+        }
+
+        remove(index) {
+                if (index < 0 || index > length) return undefined;
+                if (index === length - 1) return this.pop();
+                if (index === 0) return this.shift();
+
+                let prevNode = this.get(index - 1);
+                let removedNode = prevNode.next;
+
+                prevNode.next = removedNode.next;
+                --this.length;
+                return removedNode;
         }
 }
 
