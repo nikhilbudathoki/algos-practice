@@ -89,6 +89,23 @@ class SinglyLinkedList {
                 ++this.length;
                 return this;
         }
+
+        get(index) {
+                if (index < 0 ||
+                        this.length === 0 ||
+                        index >= this.length) {
+                        return undefined
+                };
+
+                let curNode = this.head;
+
+                for (let i = 0; i < index; ++i) {
+                        curNode = curNode.next;
+                        if (!curNode) return undefined;
+                }
+
+                return curNode;
+        }
 }
 
 let sample = new SinglyLinkedList();
@@ -98,5 +115,4 @@ sample.push("Don't")
 sample.push("make");
 sample.push("it");
 sample.push("bad");
-let answer = sample.pop();
-console.log("===", answer.val);
+console.log(sample.get(3).val);
