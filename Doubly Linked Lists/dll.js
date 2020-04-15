@@ -110,7 +110,21 @@ class DoublyLinkedList {
 
                 prevNode.next = newNode, newNode.prev = prevNode;
                 newNode.next = nextNode, nextnode.prev = newNode;
+                ++this.length;
                 return true;
         }
+        remove(index) {
+                if (index < 0 || index >= this.length) return false;
+                if (index === 0) return !!this.shift();
+                if (index === this.length - 1) return !!this.pop();
 
+                let removed = this.get(index);
+                let prevNode = removed.prev;
+                let nextNode = removed.next;
+
+                prevNode.next = nextNode, nextNode.prev = prevNode;
+                removed.prev = null, removed.next = null;
+                --this.length;
+                return true;
+        }
 }
