@@ -91,5 +91,12 @@ class DoublyLinkedList {
                 }
                 return curNode;
         }
-
+        set(index, val) {
+                let curNode = this.get(index);
+                if (curNode) {
+                        curNode.val = val;
+                        return true;
+                }
+                return false;
+        }
 }
