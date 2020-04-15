@@ -127,4 +127,19 @@ class DoublyLinkedList {
                 --this.length;
                 return true;
         }
+        reverse() {
+                if (length === 0) return false;
+                if (length === 1) return true;
+                //logic for swap
+                let curNode = this.head;
+
+                while (curNode) {
+                        let temp = curNode.prev;
+                        curNode.prev = curNode.next;
+                        curNode.next = temp;
+                        curNode = curNode.prev;
+                }
+
+                this.head = temp.prev;
+        }
 }
