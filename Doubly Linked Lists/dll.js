@@ -32,7 +32,7 @@ class DoublyLinkedList {
                 return this;
         }
         pop() {
-                if (length === 0) return undefined;
+                if (this.length === 0) return undefined;
                 let removed = this.tail;
                 if (length === 1) {
                         this.head = null;
