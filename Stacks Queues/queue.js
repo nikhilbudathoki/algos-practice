@@ -15,6 +15,7 @@ class Queue {
                 this.last = null;
                 this.size = 0;
         }
+        // Add to the last
         enqueue(val) {
                 let newNode = new Node(val);
                 if (this.size === 0) {
@@ -26,7 +27,18 @@ class Queue {
                 }
                 return ++this.size;
         }
+        // Remove from the first
         dequeue() {
+                if (this.size === 0) return null;
+                let deleted = this.first;
+                if (this.size === 1) {
+                        this.last = null;
+                }
+                this.first = this.first.next;
+                deleted.next = null;
+                --this.size;
+                return deleted;
+
 
         }
 }
