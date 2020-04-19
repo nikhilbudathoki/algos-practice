@@ -11,6 +11,25 @@ class Node {
 
 class Stack {
         constructor() {
-                this.data = new SinglyLinkedList();
+                this.first = null;
+                this.last = null;
+                this.size = null;
         }
+        /* The push and pop methods for a SLL are linear time,
+        which isn't ideal for a stack's push and pop. 
+        This will be a tweaked version
+        */
+        push(val) {
+                var newNode = new Node(val);
+                if (this.size === 0) {
+                        this.first = newNode;
+                        this.last = newNode;
+                } else {
+                        temp = this.first;
+                        this.first = newNode;
+                        this.first.next = temp;
+                }
+                return ++this.size; // This both increments the size and returns incremented value because ++ is to the left!
+        }
+
 }
