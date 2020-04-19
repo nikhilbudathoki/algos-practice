@@ -29,7 +29,8 @@ class Stack {
                         this.first = newNode;
                         this.first.next = temp;
                 }
-                return ++this.size; // This both increments the size and returns incremented value because ++ is to the left!
+                return ++this.size;
+                // This both increments the size and returns incremented value because ++ is to the left!
         }
 
         pop() {
