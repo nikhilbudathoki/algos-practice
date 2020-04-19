@@ -32,4 +32,14 @@ class Stack {
                 return ++this.size; // This both increments the size and returns incremented value because ++ is to the left!
         }
 
+        pop() {
+                if (this.size === 0) return null;
+                let popped = this.first;
+                if (this.size === 1) {
+                        this.last = null;
+                }
+                this.first = popped.next;
+                --this.size;
+                return popped;
+        }
 }
