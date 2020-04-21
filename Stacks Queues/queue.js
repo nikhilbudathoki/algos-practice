@@ -38,7 +38,5 @@ class Queue {
                 deleted.next = null;
                 --this.size;
                 return deleted;
-
-
         }
 }
