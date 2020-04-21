@@ -46,6 +46,26 @@ class BST {
                         }
                 }
         }
+        find(val) {
+                if (!this.root) return false;
+
+                let current = this.root;
+                let found = false;
+                while (current) {
+                        if (val < current.value) {
+                                current = current.left;
+                                continue;
+                        }
+                        else if (val > current.value) {
+                                current = current.right;
+                        }
+                        else {
+                                return true;
+                        }
+
+                }
+                return false;
+        }
 }
 
 
