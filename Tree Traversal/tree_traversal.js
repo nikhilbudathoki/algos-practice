@@ -129,3 +129,4 @@ tree.insert(8);
 tree.insert(20);
 console.log(tree.BFS());
 console.log(tree.DFSPreOrder());
+console.log(tree.DFSPostOrder());
