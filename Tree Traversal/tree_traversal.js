@@ -85,13 +85,33 @@ class BST {
                 }
                 return data;
         }
-
+        /*
+        Visit the root,
+        Visit the entire left side,
+        Visit the entire right side
+        */
         DFSPreOrder() {
-                let data = []
+                let data = [];
                 function traverse(node) {
                         data.push(node.value);
                         if (node.left) traverse(node.left);
                         if (node.right) traverse(node.right);
+                }
+                traverse(this.root);
+                return data;
+        }
+
+        /*
+        Visit the entire left side,
+        Visit the entire right side,
+        Visit the root
+        */
+        DFSPostOrder() {
+                let data = [];
+                function traverse(node) {
+                        if (node.left) traverse(node.left);
+                        if (node.right) traverse(node.right);
+                        data.push(node.value);
                 }
                 traverse(this.root);
                 return data;
