@@ -116,6 +116,13 @@ class BST {
                 traverse(this.root);
                 return data;
         }
+
+        /*
+        Visit the entire left side,
+        Visit the node,
+        Visit the entire right side
+        */
+
 }
 
 
