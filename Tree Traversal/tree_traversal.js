@@ -94,8 +94,8 @@ class BST {
                 let data = [];
                 function traverse(node) {
                         data.push(node.value);
-                        node.left && traverse(node.left);
-                        node.right && traverse(node.right);
+                        if (node.left) traverse(node.left);
+                        if (node.right) traverse(node.right);
                 }
                 traverse(this.root);
                 return data;
@@ -109,8 +109,8 @@ class BST {
         DFSPostOrder() {
                 let data = [];
                 function traverse(node) {
-                        node.left && traverse(node.left);
-                        node.right && traverse(node.right);
+                        if (node.left) traverse(node.left);
+                        if (node.right) traverse(node.right);
                         data.push(node.value);
                 }
                 traverse(this.root);
