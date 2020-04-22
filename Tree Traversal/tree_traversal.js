@@ -122,6 +122,16 @@ class BST {
         Visit the node,
         Visit the entire right side
         */
+        DFSInOrder() {
+                let data = [];
+                function traverse(node) {
+                        if (node.left) traverse(node.left);
+                        data.push(node.value);
+                        if (node.right) traverse(node.right);
+                }
+                traverse(this.root);
+                return data;
+        }
 
 }
 
@@ -137,3 +147,4 @@ tree.insert(20);
 console.log(tree.BFS());
 console.log(tree.DFSPreOrder());
 console.log(tree.DFSPostOrder());
+console.log(tree.DFSInOrder());
