@@ -73,9 +73,9 @@ class PriorityQueue {
 }
 
 let pQueue = new PriorityQueue();
-pQueue.enqueue(new Node(55));
-pQueue.enqueue(new Node(52));
-pQueue.enqueue(new Node(37));
+pQueue.enqueue(new Node(55, 2));
+pQueue.enqueue(new Node(52, 4));
+pQueue.enqueue(new Node(37, 6));
 
 console.log(pQueue.values);
 pQueue.dequeue();
