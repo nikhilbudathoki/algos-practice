@@ -24,6 +24,9 @@ class MaxBinaryHeap {
                 }
         }
         extractMax() {
+                if (this.values.length === 1) {
+                        return this.values.pop();
+                }
                 this.swap(0, this.values.length - 1);
                 let poppedNode = this.values.pop();
                 this.sinkDown();
