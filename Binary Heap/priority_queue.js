@@ -18,20 +18,20 @@ class PriorityQueue {
                 this.values[i] = this.values[j];
                 this.values[j] = temp;
         }
-        insert(val) {
+        enqueue(val) {
                 this.values.push(val);
                 let index = this.values.length - 1;
                 while (index > 0) {
                         let element = this.values[index];
                         let parentIndex = Math.floor((index - 1) / 2);
                         let parent = this.values[parentIndex];
-                        if (element <= parent) break;
+                        if (element.priority >= parent.priority) break;
                         this.values[parentIndex] = element;
                         this.values[index] = parent;
                         index = parentIndex;
                 }
         }
-        extractMax() {
+        dequeue() {
                 if (this.values.length === 1) {
                         return this.values.pop();
                 }
@@ -52,15 +52,15 @@ class PriorityQueue {
 
                         if (leftChildIdx < length) {
                                 leftChild = this.values[leftChildIdx];
-                                if (leftChild > element) {
+                                if (leftChild.priority < element.priority) {
                                         swap = leftChildIdx;
                                 }
                         }
                         if (rightChildIdx < length) {
                                 rightChild = this.values[rightChildIdx];
                                 if (
-                                        (swap === null && rightChild > element) ||
-                                        (swap !== null && rightChild > leftChild)
+                                        (swap === null && rightChild.priority < element.priority) ||
+                                        (swap !== null && rightChild.priority < leftChild.priority)
                                 ) {
                                         swap = rightChildIdx;
                                 }
@@ -73,10 +73,10 @@ class PriorityQueue {
 }
 
 let pQueue = new PriorityQueue();
-pQueue.insert(55);
-pQueue.insert(52);
-pQueue.insert(37);
+pQueue.enqueue(new Node(55));
+pQueue.enqueue(new Node(52));
+pQueue.enqueue(new Node(37));
 
 console.log(pQueue.values);
-pQueue.extractMax();
+pQueue.dequeue();
 console.log(pQueue.values);
