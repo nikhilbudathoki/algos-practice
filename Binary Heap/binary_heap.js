@@ -5,6 +5,11 @@ class MaxBinaryHeap {
         constructor() {
                 this.values = [];
         }
+        swap(i, j) {
+                let temp = this.values[i];
+                this.values[i] = this.values[j];
+                this.values[j] = temp;
+        }
         insert(val) {
                 this.values.push(val);
                 let index = this.values.length - 1;
@@ -19,41 +24,40 @@ class MaxBinaryHeap {
                 }
         }
         extractMax() {
-                function swap(arr, i, j) {
-                        let temp = arr[i];
-                        arr[i] = arr[j];
-                        arr[j] = temp;
-                }
-                swap(this.values, 0, this.values.length - 1);
+                this.swap(0, this.values.length - 1);
                 let poppedNode = this.values.pop();
-                let index = 0;
-                while (true) {
-                        let parent = this.values[index];
-                        let leftIdx = 2 * index + 1;
-                        let rightIdx = 2 * index + 2;
-                        let lChild = leftIdx > this.values.length ? null : this.values[leftIdx];
-                        let rChild = rightIdx > this.values.length ? null : this.values[rightIdx];
-                        if (!(lChild || rChild)) break;
-                        if (lChild > parent && rChild > parent) {
-                                if (lChild > rChild) {
-                                        swap(this.values, leftIdx, index);
-                                }
-                                if (lChild <= rChild) {
-                                        swap(this.values, rightIdx, index);
-                                }
-                                continue;
-                        }
-                        if (lChild > parent) {
-                                swap(this.values, leftIdx, index);
-                        }
-                        else if (rChild > parent) {
-                                swap(this.values, rightIdx, index);
-                        }
-                        else {
-                                break;
-                        }
-                }
+                this.sinkDown();
                 return poppedNode;
+        }
+        sinkDown() {
+                let index = 0;
+                const length = this.values.length;
+                const element = this.values[0];
+                while (true) {
+                        let leftChildIdx = 2 * index + 1;
+                        let rightChildIdx = 2 * index + 2;
+                        let leftChild, rightChild;
+                        let swap = null;
+
+                        if (leftChildIdx < length) {
+                                leftChild = this.values[leftChildIdx];
+                                if (leftChild > element) {
+                                        swap = leftChildIdx;
+                                }
+                        }
+                        if (rightChildIdx < length) {
+                                rightChild = this.values[rightChildIdx];
+                                if (
+                                        (swap === null && rightChild > element) ||
+                                        (swap !== null && rightChild > leftChild)
+                                ) {
+                                        swap = rightChildIdx;
+                                }
+                        }
+                        if (swap === null) break;
+                        this.swap(index, swap);
+                        index = swap;
+                }
         }
 }
 
