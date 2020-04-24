@@ -18,12 +18,10 @@ class HashTable {
                         let value = char.charCodeAt(0) - 96;
                         total += (total * WEIRD_PRIME + value) % this.keyMap.length;
                 }
-                console.log(key, total)
                 return total;
         }
 
         set(key, value) {
-                console.log("set_hash");
                 let index = this.hash(key);
                 if (!this.keyMap[index]) {
                         this.keyMap[index] = [];
@@ -32,7 +30,6 @@ class HashTable {
         }
 
         get(key) {
-                console.log("get_hash")
                 let index = this.hash(key);
                 if (this.keyMap[index]) {
                         for (let i = 0; i < this.keyMap[index].length; ++i) {
