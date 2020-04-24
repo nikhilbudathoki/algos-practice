@@ -46,9 +46,9 @@ class HashTable {
         keys() {
                 // return all keys of a hashtable
                 let keys = [];
-                for (let values in this.keyMap) {
-                        if (values) {
-                                for (let pair in values) {
+                for (let items in this.keyMap) {
+                        if (items) {
+                                for (let pair in items) {
                                         keys.push(pair[0]);
                                 }
                         }
@@ -58,15 +58,15 @@ class HashTable {
 
         values() {
                 // return all keys of a hashtable
-                let values = [];
-                for (let values in this.keyMap) {
-                        if (values) {
-                                for (let pair in values) {
-                                        values.push(pair[1]);
+                let valuesArr = [];
+                for (let items in this.keyMap) {
+                        if (items) {
+                                for (let pair in items) {
+                                        valuesArr.push(pair[1]);
                                 }
                         }
                 }
-                return values;
+                return valuesArr;
         }
 
 
