@@ -24,7 +24,9 @@ class HashTable {
                 // Hash the key
                 let index = this._hash(key);
                 // Store the (key, value) tuple at the index of the hashed key
-                this.keyMap[index] = [key, value];
+                if (!this.keyMap[index]) this.keyMap[index] = [];
+                this.keyMap[index].push([key, value]);
+
                 // Implement separate chaining
         }
 
