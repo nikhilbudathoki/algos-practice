@@ -14,3 +14,10 @@ function hash(key, numBuckets) {
         }
         return total;
 }
+
+
+class HashTable {
+        constructor(size = 53) {
+                this.keyMap = new Array(size);
+        }
+}
