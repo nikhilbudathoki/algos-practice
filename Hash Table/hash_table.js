@@ -9,6 +9,7 @@ class HashTable {
         constructor(size = 53) {
                 this.keyMap = new Array(size);
         }
+
         hash(key) {
                 let total = 0;
                 let WEIRD_PRIME = 31;
@@ -62,6 +63,7 @@ class HashTable {
                 for (let items in this.keyMap) {
                         if (items) {
                                 for (let pair in items) {
+                                        if (valuesArr.includes(pair[1])) continue;
                                         valuesArr.push(pair[1]);
                                 }
                         }
@@ -83,5 +85,6 @@ ht.set("plum", "#DDA0DD");
 
 console.log("\n", "TEST CASES BEGIN", '\n');
 console.log(ht.get("yellow"));
+console.log(ht.values());
 
 
