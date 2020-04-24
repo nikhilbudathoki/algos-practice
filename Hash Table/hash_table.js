@@ -21,22 +21,23 @@ class HashTable {
         }
 
         set(key, value) {
-                // Hash the key
                 let index = this._hash(key);
-                // Store the (key, value) tuple at the index of the hashed key
                 if (!this.keyMap[index]) this.keyMap[index] = [];
                 this.keyMap[index].push([key, value]);
-
-                // Implement separate chaining
         }
 
         get(key) {
-                // Hash the key
                 let index = this._hash(key);
-                // Access the array at the index of the hashed key
                 let values = this.keyMap[index];
-                // if the accessed tuple's first item === key, return second item(value)
-                if (values[0] === key) return values[1];
+                if (values) {
+                        for (let i = 0; i < values.length; ++i) {
+                                let pair = values[i];
+                                if (pair[0] === key) {
+                                        return pair[1];
+                                }
+                        }
+                }
+                return undefined;
         }
 
 }
