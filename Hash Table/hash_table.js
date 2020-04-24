@@ -9,39 +9,54 @@ class HashTable {
         constructor(size = 53) {
                 this.keyMap = new Array(size);
         }
-        _hash(key) {
+        hash(key) {
                 let total = 0;
                 let WEIRD_PRIME = 31;
-                for (let i = 0; i < Math.min(key.length, 100); ++i) {
+                for (let i = 0; i < Math.min(key.length, 100); i++) {
                         let char = key[i];
                         let value = char.charCodeAt(0) - 96;
                         total += (total * WEIRD_PRIME + value) % this.keyMap.length;
                 }
+                console.log(key, total)
                 return total;
         }
 
         set(key, value) {
-                let index = this._hash(key);
-                if (!this.keyMap[index]) this.keyMap[index] = [];
+                console.log("set_hash");
+                let index = this.hash(key);
+                if (!this.keyMap[index]) {
+                        this.keyMap[index] = [];
+                }
                 this.keyMap[index].push([key, value]);
         }
 
         get(key) {
-                let index = this._hash(key);
-                let values = this.keyMap[index];
-                if (values) {
-                        for (let i = 0; i < values.length; ++i) {
-                                let pair = values[i];
-                                if (pair[0] === key) {
-                                        return pair[1];
+                console.log("get_hash")
+                let index = this.hash(key);
+                if (this.keyMap[index]) {
+                        for (let i = 0; i < this.keyMap[index].length; ++i) {
+                                if (this.keyMap[index][i][0] === key) {
+                                        return this.keyMap[index][i][1];
                                 }
                         }
                 }
                 return undefined;
         }
+        keys() {
+                // return all keys of a hashtable
+                let keys = [];
+                for (let values in this.keyMap) {
+                        if (values) {
+                                for (let pair in values) {
+                                        keys.push(pair[0]);
+                                }
+                        }
+                }
+                return keys;
+        }
 }
 
-let ht = new HashTable();
+let ht = new HashTable(17);
 ht.set("maroon", "#800000");
 ht.set("yellow", "#FFFF00");
 ht.set("olive", "#808000");
@@ -49,3 +64,8 @@ ht.set("salmon", "#FA8072");
 ht.set("lightcoral", "#F08080");
 ht.set("mediumvioletred", "#C71585");
 ht.set("plum", "#DDA0DD");
+
+console.log("\n", "TEST CASES BEGIN", '\n');
+console.log(ht.get("yellow"));
+
+
