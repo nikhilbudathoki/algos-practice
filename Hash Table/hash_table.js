@@ -42,6 +42,7 @@ class HashTable {
                 }
                 return undefined;
         }
+
         keys() {
                 // return all keys of a hashtable
                 let keys = [];
@@ -54,6 +55,21 @@ class HashTable {
                 }
                 return keys;
         }
+
+        values() {
+                // return all keys of a hashtable
+                let values = [];
+                for (let values in this.keyMap) {
+                        if (values) {
+                                for (let pair in values) {
+                                        values.push(pair[1]);
+                                }
+                        }
+                }
+                return values;
+        }
+
+
 }
 
 let ht = new HashTable(17);
