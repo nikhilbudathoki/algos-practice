@@ -72,6 +72,7 @@ class HashTable {
 }
 
 let ht = new HashTable(17);
+
 ht.set("maroon", "#800000");
 ht.set("yellow", "#FFFF00");
 ht.set("olive", "#808000");
@@ -80,7 +81,6 @@ ht.set("lightcoral", "#F08080");
 ht.set("mediumvioletred", "#C71585");
 ht.set("plum", "#DDA0DD");
 
-console.log("\n", "TEST CASES BEGIN", '\n');
 console.log(ht.get("yellow"));
 console.log(ht.values());
 
