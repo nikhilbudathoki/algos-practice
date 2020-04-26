@@ -50,15 +50,17 @@ class Graph {
 }
 
 let g = new Graph();
-g.addVertex("Dallas");
-g.addVertex("Tokyo");
-g.addVertex("Aspen");
-g.addVertex("LA");
-g.addVertex("HK");
-g.addEdge("Dallas", "Tokyo");
-g.addEdge("Dallas", "Aspen");
-g.addEdge("HK", "Tokyo");
-g.addEdge("Dallas", "HK");
-g.addEdge("LA", "HK");
-g.addEdge("LA", "Aspen");
-console.log(g.adjanceyList);
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addVertex("E");
+g.addVertex("F");
+
+g.addEdge("A", "B");
+g.addEdge("A", "C");
+g.addEdge("B", "D");
+g.addEdge("C", "E");
+g.addEdge("D", "E");
+g.addEdge("D", "F");
+g.addEdge("E", "F");
