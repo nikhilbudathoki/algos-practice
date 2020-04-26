@@ -14,8 +14,13 @@ class Graph {
         }
 
         addEdge(v1, v2) {
-                this.adjanceyList[v1].push(v2);
-                this.adjanceyList[v2].push(v1);
+                this.adjanceyList[v1].push(v2); // For directed and undirected
+                this.adjanceyList[v2].push(v1); // Only undirected graphs
+        }
+
+        removeEdge(v1, v2) {
+                this.adjanceyList[v1] = this.adjanceyList[v1].filter(item => item !== v2);
+                this.adjanceyList[v2] = this.adjanceyList[v2].filter(item => item !== v1);
         }
 }
 
