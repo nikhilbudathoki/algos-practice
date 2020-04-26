@@ -35,34 +35,24 @@ class Graph {
 		delete this.adjList[vertex];
 	}
 
-	DFS(recursive = true) {
-		let results = [];
-		let visited = [];
+	DFS_R(start) {
+		let result = [];
+		let visited = {};
+		const adjList = this.adjList;
 
-		function DFS_recursive(vertex) {
-			let connections = this.adjList[vertex];
-			if (!connections.length) return;
-			results.push(vertex);
+		(function dfs(vertex) {
+			if (!vertex) return null;
 			visited[vertex] = true;
+			result.push(vertex);
 
-			for (let node in connections) {
-				if (!visited[node]) {
-					DFS_recursive(node);
+			adjList[vertex].forEach(neighbor => {
+				if (!visited[neighbor]) {
+					return dfs(neighbor);
 				}
-			}
-		}
+			})
+		})(start); // This syntax calls the function immediately with "start"
+		return result;
 
-		function DFS_iterative() {
-
-		}
-
-		if (recursive) {
-			DFS_recursive("A");
-		}
-		else {
-			DFS_iterative("A");
-		}
-		return results
 	}
 
 }
@@ -82,4 +72,4 @@ g.addEdge("C", "E");
 g.addEdge("D", "E");
 g.addEdge("D", "F");
 g.addEdge("E", "F");
-console.log(g.DFS());
+console.log(g.DFS_R("A"));
