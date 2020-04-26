@@ -35,7 +35,7 @@ class Graph {
 		delete this.adjList[vertex];
 	}
 
-	DFS_R(start) {
+	dfsR(start) {
 		let result = [];
 		let visited = {};
 		const adjList = this.adjList;
@@ -55,6 +55,25 @@ class Graph {
 
 	}
 
+	dfsI(start) {
+		let stack = [];
+		stack.push(start);
+		let result = [];
+		let visited = {};
+		let vertex;
+
+		while (stack.length) {
+			vertex = stack.pop();
+			if (!visited[vertex]) {
+				visited[vertex] = true;
+				result.push(vertex);
+				this.adjList[vertex].forEach(n => {
+					stack.push(n);
+				})
+			}
+		}
+		return result;
+	}
 }
 
 let g = new Graph();
@@ -72,4 +91,5 @@ g.addEdge("C", "E");
 g.addEdge("D", "E");
 g.addEdge("D", "F");
 g.addEdge("E", "F");
-console.log(g.DFS_R("A"));
+console.log(g.dfsR("A"));
+console.log(g.dfsI("A"));
