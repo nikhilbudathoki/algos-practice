@@ -74,6 +74,29 @@ class Graph {
 		}
 		return result;
 	}
+
+	bfs(start) {
+		let queue = [];
+		queue.push(start);
+		let results = [];
+		let visited = {};
+		let curNode;
+
+		visited[start] = true;
+
+		while (queue.length) {
+			curNode = queue.shift();
+			results.push(curNode);
+
+			this.adjList[curNode].forEach(n => {
+				if (!visited[n]) {
+					visited[n] = true;
+					queue.push(n);
+				}
+			})
+		}
+		return results;
+	}
 }
 
 let g = new Graph();
@@ -93,3 +116,4 @@ g.addEdge("D", "F");
 g.addEdge("E", "F");
 console.log(g.dfsR("A"));
 console.log(g.dfsI("A"));
+console.log(g.bfs("A"));
