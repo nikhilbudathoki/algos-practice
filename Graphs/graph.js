@@ -1,10 +1,15 @@
 /*
-Graphs are similar to trees
-Each node can be linked to other nodes
+We will use adjacency lists to model graphs
+        because real-world data tends to 
+        model itself into sparse graphs
 */
-class Node {
-        constructor(val) {
-                this.val = val;
-                this.connections = [];
+
+// Building an undirected graph
+class Graph {
+        constructor() {
+                this.adjanceyList = {}
+        }
+        addVertex(name) {
+                this.adjanceyList[name] = [];
         }
 }
