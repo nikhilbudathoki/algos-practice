@@ -7,9 +7,9 @@ We will use adjacency lists to model graphs
 // Building an undirected graph
 class Graph {
         constructor() {
-                this.adjanceyList = {}
+                this.adjanceyList = {};
         }
         addVertex(name) {
-                this.adjanceyList[name] = [];
+                if (!this.adjanceyList[name]) this.adjanceyList[name] = [];
         }
 }
