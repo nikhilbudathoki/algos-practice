@@ -78,7 +78,7 @@ class Graph {
 	bfs(start) {
 		let queue = [];
 		queue.push(start);
-		let results = [];
+		let result = [];
 		let visited = {};
 		let curNode;
 
@@ -86,7 +86,7 @@ class Graph {
 
 		while (queue.length) {
 			curNode = queue.shift();
-			results.push(curNode);
+			result.push(curNode);
 
 			this.adjList[curNode].forEach(n => {
 				if (!visited[n]) {
@@ -95,7 +95,7 @@ class Graph {
 				}
 			})
 		}
-		return results;
+		return result;
 	}
 }
 
