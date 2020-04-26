@@ -28,9 +28,9 @@ class Graph {
 	}
 
 	removeVertex(vertex) {
-		let edge = this.adjanceyList[vertex];
-		for (let node in edge) {
-			this.removeEdge(vertex, node);
+		while (this.adjanceyList[vertex].length) {
+			const adjV = this.adjanceyList[vertex].pop();
+			this.removeEdge(vertex, adjV);
 		}
 		delete this.adjanceyList[vertex];
 	}
@@ -39,11 +39,21 @@ class Graph {
 }
 
 let g = new Graph();
-g.addVertex("Tokyo");
 g.addVertex("Dallas");
+g.addVertex("Tokyo");
 g.addVertex("Aspen");
+g.addVertex("LA");
+g.addVertex("HK");
+//g.addEdge("Dallas", "Tokyo");
+//console.log(g.adjanceyList);
+//g.removeEdge("Dallas", "Tokyo");
+//console.log(g.adjanceyList);
 g.addEdge("Dallas", "Tokyo");
 g.addEdge("Dallas", "Aspen");
+g.addEdge("HK", "Tokyo");
+g.addEdge("Dallas", "HK");
+g.addEdge("LA", "HK");
+g.addEdge("LA", "Aspen");
 console.log(g.adjanceyList);
-g.removeEdge("Dallas", "Tokyo");
+g.removeVertex("LA")
 console.log(g.adjanceyList);
