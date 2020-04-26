@@ -35,7 +35,18 @@ class Graph {
 		delete this.adjanceyList[vertex];
 	}
 
+	DFS(recursive = true) {
+		if (recursive) return DFS_recursive();
+		return DFS_iterative();
+	}
 
+	DFS_recursive() {
+
+	}
+
+	DFS_iterative() {
+
+	}
 }
 
 let g = new Graph();
@@ -44,16 +55,10 @@ g.addVertex("Tokyo");
 g.addVertex("Aspen");
 g.addVertex("LA");
 g.addVertex("HK");
-//g.addEdge("Dallas", "Tokyo");
-//console.log(g.adjanceyList);
-//g.removeEdge("Dallas", "Tokyo");
-//console.log(g.adjanceyList);
 g.addEdge("Dallas", "Tokyo");
 g.addEdge("Dallas", "Aspen");
 g.addEdge("HK", "Tokyo");
 g.addEdge("Dallas", "HK");
 g.addEdge("LA", "HK");
 g.addEdge("LA", "Aspen");
-console.log(g.adjanceyList);
-g.removeVertex("LA")
 console.log(g.adjanceyList);
