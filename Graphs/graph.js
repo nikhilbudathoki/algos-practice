@@ -13,3 +13,7 @@ class Graph {
                 if (!this.adjanceyList[name]) this.adjanceyList[name] = [];
         }
 }
+
+g = new Graph();
+g.addVertex("Tokyo")
+console.log(g.adjanceyList);
