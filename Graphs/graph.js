@@ -19,7 +19,9 @@ class Graph {
         }
 }
 
-g = new Graph();
+let g = new Graph();
 g.addVertex("Tokyo");
-g.addVertex("San Francisco");
+g.addVertex("Dallas");
+g.addVertex("Aspen");
+g.addEdge("Dallas", "Tokyo");
 console.log(g.adjanceyList);
