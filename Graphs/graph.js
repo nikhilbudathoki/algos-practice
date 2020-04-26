@@ -7,46 +7,64 @@ We will use adjacency lists to model graphs
 // Building an undirected graph
 class Graph {
 	constructor() {
-		this.adjanceyList = {};
+		this.adjList = {};
 	}
 	addVertex(name) {
-		if (!this.adjanceyList[name]) this.adjanceyList[name] = [];
+		if (!this.adjList[name]) this.adjList[name] = [];
 	}
 
 	addEdge(v1, v2) {
-		this.adjanceyList[v1].push(v2); // For directed and undirected
-		this.adjanceyList[v2].push(v1); // Only undirected graphs
+		this.adjList[v1].push(v2); // For directed and undirected
+		this.adjList[v2].push(v1); // Only undirected graphs
 	}
 
 	removeEdge(v1, v2) {
-		this.adjanceyList[v1] = this.adjanceyList[v1].filter(
+		this.adjList[v1] = this.adjList[v1].filter(
 			item => item !== v2
 		);
-		this.adjanceyList[v2] = this.adjanceyList[v2].filter(
+		this.adjList[v2] = this.adjList[v2].filter(
 			item => item !== v1
 		);
 	}
 
 	removeVertex(vertex) {
-		while (this.adjanceyList[vertex].length) {
-			const adjV = this.adjanceyList[vertex].pop();
+		while (this.adjList[vertex].length) {
+			const adjV = this.adjList[vertex].pop();
 			this.removeEdge(vertex, adjV);
 		}
-		delete this.adjanceyList[vertex];
+		delete this.adjList[vertex];
 	}
 
 	DFS(recursive = true) {
-		if (recursive) return DFS_recursive();
-		return DFS_iterative();
+		let results = [];
+		let visited = [];
+
+		function DFS_recursive(vertex) {
+			let connections = this.adjList[vertex];
+			if (!connections.length) return;
+			results.push(vertex);
+			visited[vertex] = true;
+
+			for (let node in connections) {
+				if (!visited[node]) {
+					DFS_recursive(node);
+				}
+			}
+		}
+
+		function DFS_iterative() {
+
+		}
+
+		if (recursive) {
+			DFS_recursive("A");
+		}
+		else {
+			DFS_iterative("A");
+		}
+		return results
 	}
 
-	DFS_recursive() {
-
-	}
-
-	DFS_iterative() {
-
-	}
 }
 
 let g = new Graph();
@@ -64,3 +82,4 @@ g.addEdge("C", "E");
 g.addEdge("D", "E");
 g.addEdge("D", "F");
 g.addEdge("E", "F");
+console.log(g.DFS());
