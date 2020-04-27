@@ -37,6 +37,6 @@ function fibBottomup(n) {
     return fibNums[n];
 }
 
-//console.log(fibRecursive(40));
-//console.log(fibMemo(40));
-console.log(fibBottomup(40));
+console.log(fibRecursive(5)); // Don't increase the number!
+console.log(fibMemo(10000)); // Might have call stack error
+console.log(fibBottomup(10000)); // Lower space complexity
