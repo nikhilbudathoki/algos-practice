@@ -7,7 +7,7 @@ What we know: Fib(n) = Fib(n - 1) + Fib(n - 2)
 
 
 
-//recursive solution(BAD)
+// recursive solution(BAD)
 function fib_recursive(n) {
     if (n <= 2) {
         return 1;
@@ -15,4 +15,13 @@ function fib_recursive(n) {
     return fib_recursive(n - 1) + fib_recursive(n - 2);
 }
 
-console.log(fib_recursive(35));
+// memoized solution
+function fib_memo(n, memo = []) {
+    if (memo[n] !== undefined) return memo[n];
+    if (n <= 2) return 1;
+    let result = fib_memo(n - 1, memo) + fib_memo(n - 2, memo);
+    memo[n] = result;
+    return result;
+}
+
+console.log(fib_memo(40));
