@@ -1,4 +1,4 @@
-# Javascript Algorithms and Data Structures
+# Intro
 
 Implementing common data structures and algorithms. I will also be experimenting with a concept called **Spaced Repition** to improve knowledge retention. 
 Codebase is implemented in JavaScript or Python. 
