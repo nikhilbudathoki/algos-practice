@@ -7,6 +7,7 @@ and you may not use the same element twice.
 
 Source: https://leetcode.com/problems/two-sum/
 """
+from typing import List
 
 
 def two_sum(nums: List[int], target: int) -> List[int]:
