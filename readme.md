@@ -5,7 +5,7 @@ Codebase is implemented in JavaScript or Python.
 
 ##  Subjects covered include:
 
-1. #### Recursion
+1. #### Classic Recursion
 
 2. #### Searching Algorithms(KVM Search, Binary Search etc.)
 
