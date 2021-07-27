@@ -6,39 +6,34 @@ https://leetcode.com/problems/longest-palindromic-substring/
 
 from typing import List
 
+
 def longestPalindrome(s: str) -> str:
-    max_indices = [0, 0]
-    dp = [[2 for x in range(len(s))] for y in range(len(s))]
-    for i in range(len(s)):
-        dp[i][i] = 1
-    max_len = 1
-    for i in range(len(s) - 1):
-        j = i + 1
-        if s[i] == s[j]:
-            max_len = 2
-            dp[i][j] = 1
-            max_indices[0] = i
-            max_indices[1] = j
-        else:
-            dp[i][j] = 0
-    for length in range(3,len(s) + 1):
-        for start in range(len(s)):
-            end = start + length - 1
-            if end >= len(s):
-                continue 
-            if s[start] == s[end] and dp[start + 1][end - 1] == 1:
-                dp[start][end] = 1
-                if length > max_len:
-                    max_len = length
-                    max_indices[0] = start
-                    max_indices[1] = end
+    if s == '':
+        return s
+    start = end = 0
+    for center in range(len(s)):
+        center_around_letter = expand(s, center, center)
+        center_between_letters = expand(s, center, center+1)
+        max_length = max(center_around_letter, center_between_letters)
+        # if encountered palindrome is longer than/equal to our max so far
+        if max_length > end - start:
+            start = center - (max_length - 1) // 2
+            end = center + max_length//2
+    return s[start:end+1]
 
-            else:
-                dp[start][end] = 0   
-    return s[max_indices[0]: max_indices[1] + 1]
+def expand(s: str, left: int, right: int) -> int:
+    """
+    Expands around the given indices untill it encounters text that is not palindromic
+    """
+    while left >= 0 and right < len(s) and s[left] == s[right]:
+        print(s[left: right + 1], end = ' -> ')
+        left -= 1
+        right += 1
+        # The last iteration of the loops overcompensates by 2
+    # right - left normally undercompensates by 1, so subtracting 1
+    return right - left - 1
 
-testcase = "eebzcrhbishfhmiminstjudrmgqbjgztrczaipwnyxywjtfvzhjblbxdjoxitjxhoxvrygpudzollkzyjspcrurtlxvopboqogpmeimnzpzlcnmmboizjtsehbraojzdmsihepphexnpmssqeimcipbzvjltywradlbwwqzozphflxzxmrnhhjmfrucswfzndchgrgabolcjwdvfetsuugpkizncpjdeclaopfjmdwmhlxcvncbprfxfompsbqdjlqplfrppzfdntfxwxspwgybvqpjkasvqhovlwprsyqdyocryqccrbsggohjjgzhxqxcmpsugnzclgcsrbpwvrxsxaejntmnpyoabkqpzqvodcobwjqxxcfmjdrteptnjlppljntpetrdjmfcxxqjwbocdovqzpqkbaoypnmtnjeaxsxrvwpbrscglcznguspmcxqxhzgjjhoggsbrccqyrcoydqysrpwlvohqvsakjpqvbygwpsxwxftndfzpprflpqljdqbspmofxfrpbcnvcxlhmwdmjfpoalcedjpcnzikpguustefvdwjclobagrghcdnzfwscurfmjhhnrmxzxlfhpzozqwwbldarwytljvzbpicmieqssmpnxehppehismdzjoarbhestjziobmmnclzpznmiempgoqobpovxltrurcpsjyzkllozdupgyrvxohxjtixojdxblbjhzvftjwyxynwpiazcrtzgjbqgmrdujtsnimimhfhsibhrczbee"
-
+testcase = "aabbaa"
 result = longestPalindrome(testcase)
 
 print(result)
