@@ -15,16 +15,17 @@ source: https://leetcode.com/problems/zigzag-conversion/
 """
 
 def convert(s, numRows):
+    if numRows == 1:
+        return s
     rows = [""] * numRows
     direction = 1
     place = 0
 
-    for i, letter in enumerate(s):
+    for letter in s:
         rows[place] += letter
-        if numRows > 1:
-            place += direction
-            if place == 0 or place == numRows - 1:
-                direction *= -1
+        place += direction
+        if place == 0 or place == numRows - 1:
+            direction *= -1
     return ("".join(rows))
 
 s = "PAYPALISHIRING"
