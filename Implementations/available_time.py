@@ -17,7 +17,7 @@ def available_times(cal1, cal1_bounds, cal2, cal2_bounds):
     i = -1
     j = -1
 
-    while True:
+    while i <= len(cal1) and j <= len(cal2):
         if i == -1 and j == -1:
             if compare_times(cal1_bounds[0], cal2_bounds[0]) <= 0: #Cal 1 is earlier
                 merged.append(['-1',cal2_bounds[0]])
@@ -28,10 +28,8 @@ def available_times(cal1, cal1_bounds, cal2, cal2_bounds):
             continue
         if i == len(cal1):
             merged.extend(cal2[j:])
-            break
         elif j == len(cal2):
-            merged.extend(cal1[i:])
-            break        
+            merged.extend(cal1[i:])        
         starttimediff = compare_times(cal1[i][0], cal2[j][0])
         if starttimediff < 0: # cal 1 is earlier
             if compare_times(cal1[i][0], merged[-1][1]) > 0:
