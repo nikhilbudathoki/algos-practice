@@ -23,8 +23,31 @@ def trap(height: List[int]) -> int:
 
     return total
 
-
-
+def trap_two_pointers(height: List[int]) -> int:
+    left_max = right_max = 0
+    left = 0
+    right = 1
+    total = 0
+    while left < right:
+        # Water is bounded by left bar
+        if height[left] < height[right]:
+            # Tallest bar to left is shorter, so can't contain water :(
+            if height[left] >= left_max:
+                left_max = height[left]
+            # Bar to left is taller, so current bar can contain water :)
+            else:
+                total += left_max - height[left]
+            left += 1
+        # Water is bounded by right bar
+        else:
+            # Tallest bar to right is shorter, so can't contain water :(
+            if height[right] >= right_max:
+                right_max = height[right]
+            # Tallest bar to right is taller, so can contain water :)
+            else:
+                total += right_max - height[right]
+            right -= 1
+    return total
 
 height = [0,1,0,2,1,0,1,3,2,1,2,1]
 result = trap(height)
