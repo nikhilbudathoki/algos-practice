@@ -2,21 +2,24 @@
 Given an unsorted array with both positive and negative integers,
 find the smallest positive integers not in the array.
 
-Source: https://www.geeksforgeeks.org/find-the-smallest-positive-number-missing-from-an-unsorted-array/
+Source: https://leetcode.com/problems/first-missing-positive/
 """
 
-def smallest_not_in_array(arr):
-    n = len(arr)
-    for i in range(n):
-        correct = arr[i] - 1
-        while 1 <= arr[i] <= n and arr[i] != arr[correct]:
-            arr[i], arr[correct] = arr[correct], arr[i]
-            correct = arr[i] - 1
+def smallest_not_in_array(nums):
+    placeholder = len(nums) + 2
+    for i in range(len(nums)):
+        if nums[i] <= 0:
+            nums[i] = placeholder       
+    for elem in nums:
+        if elem < 0:
+            elem *= -1
+        if elem <= len(nums) and nums[elem - 1] >= 0:
+            nums[elem - 1] *= -1
     
-    for i in range(n):
-        if i + 1 != arr[i]:
+    for i, num in enumerate(nums):
+        if num >= 0:
             return i + 1
-    return n + 1
+    return placeholder - 1
 
 
 x = [5, 2, 3, -12, -3, 1, 6, 9]
