@@ -1,6 +1,7 @@
 """
 Implement a Trie(prefix-tree)
 """
+
 class TrieNode:
     def __init__(self):
         self.children = {}

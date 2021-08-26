@@ -1,3 +1,11 @@
+"""
+Given an m * n board of characters and a word, return if the word is on the board.
+A word must be constructed from a sequence of letters adjacent to each other.
+
+source: https://leetcode.com/problems/word-search/
+"""
+
+
 def exist(board, word):
     x = len(board)
     y = len(board[0])
