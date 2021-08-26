@@ -17,39 +17,37 @@ def findWords(board: List[List[str]], words: List[str]) -> List[str]:
     def out_of_bounds(i, j):
         if i < 0 or i >= x:
             return True 
-        if j < 0 or j >= x:
+        if j < 0 or j >= y:
             return True 
         return False 
-    
+
     for word in words:
         trie.insert(word)
 
     def dfs(i,j, curr, word_so_far):
-        if out_of_bounds(i, j):
-            return
         if curr.end_of_word:
             result.append(word_so_far)
-            curr.end_of_word = False
+            curr.end_of_word = False   
+        if out_of_bounds(i, j):
+            return
         temp = board[i][j]
-        word_so_far += temp
         if temp not in curr.children:
             return
-        print(curr.children)
         curr = curr.children[temp]
         board[i][j] = ''
-        dfs(i+1, j, curr, word_so_far)
-        dfs(i-1, j, curr, word_so_far)
-        dfs(i, j+1, curr, word_so_far)
-        dfs(i, j-1, curr, word_so_far)
+        dfs(i+1, j, curr, word_so_far + temp)
+        dfs(i-1, j, curr, word_so_far + temp)
+        dfs(i, j+1, curr, word_so_far + temp)
+        dfs(i, j-1, curr, word_so_far + temp)
         board[i][j] = temp
-    
+
     result = []
     for i in range(x):
         for j in range(y):
-            dfs(i, j, 0, '')
-    
+            dfs(i, j, curr, '')
+
     return result
-    
+
 
     
     
