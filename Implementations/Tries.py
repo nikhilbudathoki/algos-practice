@@ -7,12 +7,10 @@ class TrieNode:
         self.children = {}
         self.end_of_word = False
 
-
 class Trie:
     def __init__(self):
         self.root = TrieNode()
         
-
     def insert(self, word: str) -> None:
         cur = self.root 
         for char in word:
